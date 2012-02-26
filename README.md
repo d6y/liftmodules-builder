@@ -28,10 +28,10 @@ TO DO
 -----
 
 * Ensure target directory is created on cloudbees for `publish` to avoid "Forbidden" error.
+* Find a way to make Jenkins build ignore the all project ("Repository for publishing is not specified").  Or publish it, I guess.
 * Figure out how to get crossbuilds working for: 2.8.1 2.9.0-1 2.9.1 via https://github.com/harrah/xsbt/wiki/Cross-Build
 * Cverride credentails settings to avoid local dev having to set up credentials in /private/liftmodules/cloudbees.credentials
 * Support building and publishing SNAPSHOTS
-* Set up on Jenkins (trivial)
 * Talk to Lift team about triggering build for SNAPSHOT
 
 
