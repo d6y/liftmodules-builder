@@ -5,11 +5,17 @@ object LiftModulesBuildAll extends Build {
 
 	val liftVersion = SettingKey[String]("liftVersion", "The version of the Lift Web Framework")
 	
-	lazy val googleAnalytics = uri("git://github.com/d6y/liftmodules-googleanalytics.git")
+	// Git "read-only" URLs appear to be the ones to use here:
+	lazy val modules: Seq[ProjectReference] = List(
+		uri("git://github.com/d6y/liftmodules-googleanalytics.git"),
+		uri("git://github.com/d6y/liftmodules-imap-idle.git") 
+		)
 	 	
-  	lazy val root = Project(id = "all", base = file(".")).
-  					aggregate(googleAnalytics).
-  					settings( liftVersion in googleAnalytics := "2.4-M4" )
+	// Override the version of Lift for all modules being built:
+	lazy val moduleSettings = modules.map( module => liftVersion in module := "2.4" )
 
- 
+  	lazy val root = Project(id = "all", base = file(".")).
+  					aggregate(modules:_*).
+  					settings(moduleSettings:_*)
+
 } 
