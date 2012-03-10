@@ -12,11 +12,14 @@ object LiftModulesBuildAll extends Build {
 	)
 	 	
 	// Override the version of Lift for all modules being built:
-	lazy val moduleSettings = modules.map( module => liftVersion in module := "2.4" )
+	lazy val moduleSettings = modules.map { module => 
+		liftVersion in module := "2.4"
+	}
 
   	lazy val root = Project(id = "all", base = file(".")).
   					aggregate(modules:_*).
  					settings(publish := { }). // don't publish this wrapper project 
+ 					settings(crossScalaVersions := Seq("2.8.1", "2.9.0-1", "2.9.1")).
   					settings(moduleSettings:_*)
 
 } 

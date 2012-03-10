@@ -29,8 +29,6 @@ TO DO
 
 * Ensure target directory is created on cloudbees for `publish` to avoid "Forbidden" error: https://github.com/harrah/xsbt/issues/323
 
-* Figure out how to get crossbuilds working for: 2.8.1 2.9.0-1 2.9.1 via https://github.com/harrah/xsbt/wiki/Cross-Build
-
 * Override credentials settings to avoid local dev having to set up credentials in /private/liftmodules/cloudbees.credentials
 
 * Support building and publishing SNAPSHOTS
