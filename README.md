@@ -22,18 +22,25 @@ Status
 * External modules and Lift version is defined in `project/LiftModulesBuildAll.scala`
 * The Google Analytics module [has been modified](https://github.com/d6y/liftmodules-googleanalytics/commit/8eb5db84b8b2ae346ca437a89449cb0d7478e03b) to be compatible with this (i.e., it uses the `liftVersion` Setting)
 * package does the right thing, but we have no control over where the output JAR is written.
-* -> Waiting on SBT 0.12 to allow us to set staging directory [implemented by the fix to SBT issue #331](https://github.com/harrah/xsbt/issues/331)
+
 
 TO DO
 -----
 
-* Ensure target directory is created on cloudbees for `publish` to avoid "Forbidden" error.
-* Find a way to make Jenkins build ignore the all project ("Repository for publishing is not specified").  Or publish it, I guess.
+* Ensure target directory is created on cloudbees for `publish` to avoid "Forbidden" error: https://github.com/harrah/xsbt/issues/323
+
 * Figure out how to get crossbuilds working for: 2.8.1 2.9.0-1 2.9.1 via https://github.com/harrah/xsbt/wiki/Cross-Build
-* Cverride credentails settings to avoid local dev having to set up credentials in /private/liftmodules/cloudbees.credentials
+
+* Override credentials settings to avoid local dev having to set up credentials in /private/liftmodules/cloudbees.credentials
+
 * Support building and publishing SNAPSHOTS
+
 * Talk to Lift team about triggering build for SNAPSHOT
 
+Gotchas
+-------
+
+* If things go weird, `rm -rf ~/.sbt/staging` (e.g., poms with wrong groupId)
 
 
 
