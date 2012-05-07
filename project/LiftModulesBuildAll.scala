@@ -6,10 +6,10 @@ object LiftModulesBuildAll extends Build {
 	val liftVersion = SettingKey[String]("liftVersion", "The version of the Lift Web Framework to build against")
 	
 	// Git "read-only" URLs appear to be the ones to use here:
-	lazy val modules: Seq[ProjectReference] = 
-		uri("git://github.com/d6y/liftmodules-googleanalytics.git") ::
-		//uri("git://github.com/d6y/liftmodules-imap-idle.git") ::
-		Nil
+	lazy val modules: Seq[ProjectReference] = List(
+		uri("git://github.com/d6y/liftmodules-googleanalytics.git"),
+		uri("git://github.com/d6y/liftmodules-paypay.git")
+		)
 	
 	// Override the version of Lift and publish settings for all modules being built:
 	lazy val moduleSettings: Seq[Setting[_]] = modules.flatMap { module => List( 
