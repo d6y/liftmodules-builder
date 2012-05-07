@@ -1,10 +1,9 @@
 Build all External Lift Modules
 ===============================
 
-This SBT project aims to build and publish all external Lift Modules against a specified version of Lift.
+This SBT project aims to build and publish multiple Lift Modules against a specified version of Lift.
 
-The purpose is to be able to change just this build when a new Lift version becomes available, and then this build will compile, package and publish external Lift modules without further intervention. At the same time, individual external Lift modules should still be able to do whatever they want to do on their schedule.
-
+The purpose is to be able to change just this build when a new Lift version becomes available, and then this build will compile, package and publish external modules without further intervention. At the same time, individual external Lift modules should still be able to do whatever they want to do on their schedule.
 
 The Plan
 ---------
@@ -14,26 +13,24 @@ The Plan
 * Specify the latest Lift version in this build
 * Build all participating modules using the version of Lift specified in this build.
 * Build via Jenkins and email on error/warning.
-* Publish successful builds into the external modules repo.
+* Publish successful builds into the Sonatype repo.
 
 Status
 ------
 
-* External modules and Lift version is defined in `project/LiftModulesBuildAll.scala`
+* This build is capable of `+publish` multiple modules.
+
 * The Google Analytics module [has been modified](https://github.com/d6y/liftmodules-googleanalytics/commit/8eb5db84b8b2ae346ca437a89449cb0d7478e03b) to be compatible with this (i.e., it uses the `liftVersion` Setting)
-* package does the right thing, but we have no control over where the output JAR is written.
 
 
 TO DO
 -----
 
-* Ensure target directory is created on cloudbees for `publish` to avoid "Forbidden" error: https://github.com/harrah/xsbt/issues/323
+* Add a regular Lift module and see if that works.
 
-* Override credentials settings to avoid local dev having to set up credentials in /private/liftmodules/cloudbees.credentials
+* Decide what to do about PGP signing during build. I guess we have a credentials file on the /private area of the build server and the PGP password in the build file.
 
-* Support building and publishing SNAPSHOTS
-
-* Talk to Lift team about triggering build for SNAPSHOT
+* Support non-snapshot builds
 
 Gotchas
 -------
